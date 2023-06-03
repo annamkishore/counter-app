@@ -26,3 +26,11 @@ CMD ["yarn", "start"]
 #EXPOSE 4000
 #
 #ENTRYPOINT ["nginx", "-g", "daemon off;"]
+
+
+#--------------help to build & run docker container--------------
+# 1. Build the Docker image
+# 2. Run the Docker container
+
+#docker build -t counter-web-tag .
+#docker run -p 4000:4000 counter-web-tag

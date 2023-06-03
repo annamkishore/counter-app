@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: counter-web-deployment
+  labels:
+    app: counter-web
+spec:
+  replicas: 3  # Number of desired replicas
+  selector:
+    matchLabels:
+      app: counter-web
+  template:
+    metadata:
+      labels:
+        app: counter-web
+    spec:
+      containers:
+        - name: counter-web-container
+          image: localhost:32000/container-web-tag2:registry  # Replace with your Docker image name and tag
+          ports:
+            - containerPort: 4000  # Port on which the application is running
+
+#-----------How to run this file
+#  kubectl apply -f deployment.yaml

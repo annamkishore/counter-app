@@ -24,21 +24,24 @@ Current App Components:
 #---------------------------Pipeline-----------------------
 State:
   done:
+    1) create dockerfile(s): done for web, service
+    2) create docker image: done, working image
+    2.5) created local docker registry: done, and pushed image to local registry
+      to use built-in registry.. good one.. https://microk8s.io/docs/registry-built-in
+    3) create kube DD: done for web    #Create Kubernetes Deployment YAML files for each component
+    4) create kube service: #Create a Kubernetes Service YAML file for the backend component to expose it internally within the cluster
+      cmd> kubectl expose deployment counter-web-deployment  --type="LoadBalancer"
+      now, should see counter-web-deployment in services, use the ClusterIP to access webapp
   in-progress:
-    1) create dockerfile(s):
-      for web -- issue 1
+    5) create kube ingress: #create a Kubernetes Ingress or LoadBalancer Service to expose the frontend component to the outside world
   todo:
-    - 2) create dockerimage
-    - 3) create kube DD      #Create Kubernetes Deployment YAML files for each component
-    - 4) create kube service #Create a Kubernetes Service YAML file for the backend component to expose it internally within the cluster
-    - 5) create kube ingress #create a Kubernetes Ingress or LoadBalancer Service to expose the frontend component to the outside world
-    - 6) create kube secrets #to store sensitive info like DB credentials or API keys
-    - 7) create kube config maps #to manage config files or env variables that need to be injected into the containers
-    - 8) mongodb
-    - 9) ingress
-    - 10) observability
+    6) create kube secrets: #to store sensitive info like DB credentials or API keys
+    7) create kube config maps: #to manage config files or env variables that need to be injected into the containers
+    8) mongodb:
+    9) ingress:
+    10) observability:
   issues:
-    issue 1): |
+    issue 1 (fixed, i.e. bypassed): | #in web dockerfile
       Step 9/13 : COPY --from=build /app/dist .
       Error response from daemon: COPY failed: stat app/dist: file does not exist
       Failed to deploy '<unknown> Dockerfile: ../counter-app/counter-web/Dockerfile': Can't retrieve image ID from build stream
