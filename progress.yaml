@@ -1,0 +1,44 @@
+#
+#------------------------Counter App-----------------------
+#
+
+Target:
+  Frontend:
+    counter-web       ReactJS: NextJS, Antd
+  Backend:
+    counter-service    NodeJS: increment by 1, decrement by 1
+    accumulate-service GoLang: add by m, subtract by n
+    auth-service       NodeJS: multiple auth options
+  Database:
+    mongo
+  misc config:
+    - ingres
+    - observability
+  Deployment:
+    Kubernetes
+
+Current App Components:
+  - Counter Service
+  - Counter Web
+
+#---------------------------Pipeline-----------------------
+State:
+  done:
+  in-progress:
+    1) create dockerfile(s):
+      for web -- issue 1
+  todo:
+    - 2) create dockerimage
+    - 3) create kube DD      #Create Kubernetes Deployment YAML files for each component
+    - 4) create kube service #Create a Kubernetes Service YAML file for the backend component to expose it internally within the cluster
+    - 5) create kube ingress #create a Kubernetes Ingress or LoadBalancer Service to expose the frontend component to the outside world
+    - 6) create kube secrets #to store sensitive info like DB credentials or API keys
+    - 7) create kube config maps #to manage config files or env variables that need to be injected into the containers
+    - 8) mongodb
+    - 9) ingress
+    - 10) observability
+  issues:
+    issue 1): |
+      Step 9/13 : COPY --from=build /app/dist .
+      Error response from daemon: COPY failed: stat app/dist: file does not exist
+      Failed to deploy '<unknown> Dockerfile: ../counter-app/counter-web/Dockerfile': Can't retrieve image ID from build stream
