@@ -9,4 +9,9 @@ const decrement = ctx => {
     ctx.body = --counter
 }
 
-export {increment, decrement}
+const current = ctx => {
+    console.log("current")
+    ctx.body = counter
+}
+
+export {increment, decrement, current}
