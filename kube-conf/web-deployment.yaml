@@ -21,4 +21,4 @@ spec:
             - containerPort: 4000  # Port on which the application is running
 
 #-----------How to run this file
-#  kubectl apply -f deployment.yaml
+#  kubectl apply -f web-deployment.yaml
