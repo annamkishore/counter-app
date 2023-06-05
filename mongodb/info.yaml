@@ -1,0 +1,17 @@
+help: |
+  // create db, if exists use
+  use counterdb
+  
+  // insert doc in a collection, also creates collection if not exists
+  db.counter.insertOne({name: "c1", count:0})
+  
+  // select
+  db.counter.find({name: "c1"})
+  
+  // update (increment)
+  db.counter.updateOne({name: "c1"}, {$inc: {count: 1}})
+  // update (decrement)
+  db.counter.updateOne({name: "c1"}, {$inc: {count: -1}})
+  
+  show dbs
+  
