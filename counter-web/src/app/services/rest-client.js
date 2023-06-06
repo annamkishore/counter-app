@@ -1,7 +1,8 @@
 
 import axios from "axios"
 
-let urlPrefix = "http://localhost:4001"
+// example "http://localhost:4001"
+let urlPrefix = process.env.COUNTER_SERVICE_URL
 
 let urlMap = {
     increment: `${urlPrefix}/increment`,
@@ -22,6 +23,7 @@ let decrement = async () => {
 }
 
 let current = async () => {
+    console.log("current url: ", urlMap.current)
     let response = await axios.get(urlMap.current)
     console.log("current", response.data)
     return response.data

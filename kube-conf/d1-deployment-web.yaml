@@ -19,6 +19,9 @@ spec:
           image: localhost:32000/container-web-tag:registry  # Replace with your Docker image name and tag
           ports:
             - containerPort: 4000  # Port on which the application is running
+          env:
+            - name: COUNTER_SERVICE_URL
+              value: http://10.152.183.48:4001
 
 #-----------How to run this file, i.e. deployment & expose it
 #  Step 1 docker build & push to registry

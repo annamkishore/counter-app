@@ -38,8 +38,9 @@ State:
         now, should see counter-web-deployment in services, use the ClusterIP to access webapp
       5) create pv, pvc, dd for mongodb & expose service: done
         cmd> kubectl expose deployment mongodb-deployment  --type="LoadBalancer"
+      6) create kube DD for counter-service (backend) & expose service: #Create a Kubernetes Service YAML file for the backend component to expose it internally within the cluster
   in-progress:
-    6) create kube DD for counter-service (backend) & expose service: #Create a Kubernetes Service YAML file for the backend component to expose it internally within the cluster
+    how to pass clusterip to frontend via dd
   todo:
     7) create kube ingress: #create a Kubernetes Ingress or LoadBalancer Service to expose the frontend component to the outside world
     8) create kube secrets: #to store sensitive info like DB credentials or API keys
