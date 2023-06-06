@@ -1,4 +1,4 @@
-FROM node:18-alpine AS build
+FROM node:18-alpine AS builder
 
 WORKDIR /app
 COPY . .
@@ -6,6 +6,13 @@ COPY . .
 RUN yarn
 RUN yarn build
 
+
+
+# Step 2. Production image, copy all the files and run next
+FROM node:18-alpine AS runner
+
+WORKDIR /app
+COPY --from=builder /app/ .
 EXPOSE 4000
 
 CMD ["yarn", "start"]

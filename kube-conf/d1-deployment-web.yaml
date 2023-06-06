@@ -16,10 +16,14 @@ spec:
     spec:
       containers:
         - name: counter-web-container
-          image: localhost:32000/container-web-tag2:registry  # Replace with your Docker image name and tag
+          image: localhost:32000/container-web-tag:registry  # Replace with your Docker image name and tag
           ports:
             - containerPort: 4000  # Port on which the application is running
 
 #-----------How to run this file, i.e. deployment & expose it
+#  Step 1 docker build & push to registry
+#  docker build . -t localhost:32000/container-web-tag:registry
+#  docker push localhost:32000/container-web-tag:registry
+
 #  kubectl apply -f d1-deployment-web.yaml
 #  kubectl expose deployment counter-web-deployment  --type="LoadBalancer"
