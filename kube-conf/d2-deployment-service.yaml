@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: counter-service-deployment
+  labels:
+    app: counter-service
+spec:
+  replicas: 3  # Number of desired replicas
+  selector:
+    matchLabels:
+      app: counter-service
+  template:
+    metadata:
+      labels:
+        app: counter-service
+    spec:
+      containers:
+        - name: counter-service-container
+          image: localhost:32000/container-service-tag:registry  # Replace with your Docker image name and tag
+          ports:
+            - containerPort: 4001  # Port on which the application is running
+
+  a:
+#-----------How to run this file
+#  Step 1 docker build & push to registry
+#  docker build . -t localhost:32000/container-service-tag:registry
+#  docker push localhost:32000/container-service-tag:registry
+
+#  Step 2 kube deploy & expose
+#  kubectl apply -f d2-deployment-service.yaml
+#  kubectl expose deployment counter-service-deployment  --type="LoadBalancer"

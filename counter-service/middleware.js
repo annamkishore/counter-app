@@ -1,17 +1,19 @@
-let counter = 0
+import * as db from "./db.js";
 
-const increment = ctx => {
+//-----------------------------REST middleware-----------------------------
+
+const increment = async ctx => {
     console.log("incr")
-    ctx.body = ++counter
+    ctx.body = await db.increment()
 }
-const decrement = ctx => {
+const decrement =  async ctx => {
     console.log("decr")
-    ctx.body = --counter
+    ctx.body = await db.decrement()
 }
 
-const current = ctx => {
+const current = async ctx => {
     console.log("current")
-    ctx.body = counter
+    ctx.body = await db.current()
 }
 
 export {increment, decrement, current}

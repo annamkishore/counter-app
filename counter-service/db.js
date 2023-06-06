@@ -8,18 +8,9 @@ let crud = {
     filter: {name: "c1"}
 }
 
-async function increment() {
-    await update(1)
-}
-async function decrement() {
-    await update(-1)
-}
-
-async function current() {
-    await update()
-}
 async function update(count) {
     try {
+        client.connect()
         let db = await client.db('counterdb')
         let coll = await db.collection("counter")
         if(count) {
@@ -31,13 +22,25 @@ async function update(count) {
     }catch (error) {
         console.error('Error while connecting: ', error)
     }finally {
-        client.close()
+        // client.close()
     }
+}
+
+//-----------------------------DB calls exposed-----------------------------
+async function increment() {
+    return await update(1)
+}
+async function decrement() {
+    return await update(-1)
+}
+async function current() {
+    return await update()
 }
 
 export {increment, decrement, current}
 
-(async function () {
-    let val = await update(-10)
-    console.log(val)
-})()
+// (async function () {
+//     let val1 = await increment()
+//     let val2 = await increment()
+//     console.log(val1)
+// })()
