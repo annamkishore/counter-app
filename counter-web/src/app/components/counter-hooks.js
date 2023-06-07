@@ -13,17 +13,17 @@ export function useCounter() {
     return [count, increment, decrement]
 }
 
-export function useCounterService(initialValue) {
+export function useCounterService() {
     let [count, setCount] = useState()
     useEffect(()=>{
-        setCount(preVal=>client.current())
+        client.current().then(setCount)
     }, [])
 
     const increment = async () => {
-        setCount(client.increment())
+        client.increment().then(setCount)
     }
     const decrement = async () => {
-        setCount(client.decrement())
+        client.decrement().then(setCount)
     }
 
     return [count, increment, decrement]

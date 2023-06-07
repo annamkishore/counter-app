@@ -3,6 +3,7 @@ import axios from "axios"
 
 // example "http://localhost:4001"
 let urlPrefix = process.env.COUNTER_SERVICE_URL
+console.log("rest-client.js url", urlPrefix)
 
 let urlMap = {
     increment: `${urlPrefix}/increment`,
