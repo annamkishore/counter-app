@@ -18,7 +18,7 @@ Technologies:
   Container:
     - Microk8s
 
-Project Components (Plan):
+Project Components (Planned):
   Frontend:
     counter-web        ReactJS: NextJS, Antd
   Backend:
@@ -33,9 +33,18 @@ Project Components (Plan):
   Deployment:
     Kubernetes
 
-Current App Components (Current):
+Project Components (Current):
   - Counter Service
   - Counter Web
+
+Installations:
+  - microk8s
+  - mongodb
+  - golang
+  - nodejs
+
+one time setup:
+  TBD
 
 Setup:
   1. microk8s start:
@@ -44,7 +53,19 @@ Setup:
     example: https://127.0.0.1:10443
   3. deploy:
     backend: TBD
-    frontend: run build-deploy.sh
+    frontend: | #run build-deploy.sh
+      docker> build docker image
+      docker> push image to local registry (microk8s - private image registry)
+      kubectl> apply deployment yaml
+      kubectl> expose deployment
+    database: |
+      get the db from services -> mongodb-deployment -> Cluster IP & port
+      10.152.183.49:27017
   4. access site url:
     goto dashboard-proxy -> services -> http://10.152.183.219:4000
     (i.e. Cluster IP of counter-web-deployment, port from deployment yaml file)
+  5. microk8s stop:
+  6. done:
+
+CI/CD:
+  TBD

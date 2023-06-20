@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: counter-service-deployment
+  labels:
+    app: counter-service
+spec:
+  replicas: 3  # Number of desired replicas
+  selector:
+    matchLabels:
+      app: counter-service
+  template:
+    metadata:
+      labels:
+        app: counter-service
+    spec:
+      containers:
+        - name: counter-service-container
+          image: localhost:32000/container-service-tag-1:hello-1  # Replace with your Docker image name and tag
+          ports:
+            - containerPort: 4001  # Port on which the application is running
+          env:
+            - name: mongo_url
+              value: "mongodb://10.152.183.49:27017"
