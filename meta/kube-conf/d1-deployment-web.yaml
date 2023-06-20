@@ -16,17 +16,18 @@ spec:
     spec:
       containers:
         - name: counter-web-container
-          image: localhost:32000/container-web-tag:registry  # Replace with your Docker image name and tag
+          image: localhost:32000/container-web-tag-3:hello3  # Replace with your Docker image name and tag
+          imagePullPolicy: Always
           ports:
             - containerPort: 4000  # Port on which the application is running
           env:
-            - name: COUNTER_SERVICE_URL
+            - name: NEXT_PUBLIC_COUNTER_SERVICE_URL
               value: http://10.152.183.48:4001
 
 #-----------How to run this file, i.e. deployment & expose it
 #  Step 1 docker build & push to registry
-#  docker build . -t localhost:32000/container-web-tag:registry
-#  docker push localhost:32000/container-web-tag:registry
+#  docker build . -t localhost:32000/container-web-tag:hello2
+#  docker push localhost:32000/container-web-tag:hello2
 
-#  kubectl apply -f d1-deployment-web.yaml
+#  kubectl apply -f ../kube-conf/d1-deployment-web.yaml
 #  kubectl expose deployment counter-web-deployment  --type="LoadBalancer"

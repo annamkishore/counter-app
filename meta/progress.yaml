@@ -4,25 +4,6 @@ Version:
 #------------------------Counter App-----------------------
 #
 
-Target:
-  Frontend:
-    counter-web       ReactJS: NextJS, Antd
-  Backend:
-    counter-service    NodeJS: increment by 1, decrement by 1
-    accumulate-service GoLang: add by m, subtract by n
-    auth-service       NodeJS: multiple auth options
-  Database:
-    mongo
-  misc config:
-    - ingres
-    - observability
-  Deployment:
-    Kubernetes
-
-Current App Components:
-  - Counter Service
-  - Counter Web
-
 #---------------------------Pipeline-----------------------
 State:
   done:

@@ -1,0 +1,50 @@
+#---------------------------------------------------------
+#               Counter App - a web based counter
+#---------------------------------------------------------
+
+What is this:
+  Counting App - MSA based (Micro Service Arch)
+
+Technologies:
+  Backend:
+    - Go Lang
+    - NodeJS
+  Frontend:
+    - NextJS
+    - ReactJS
+    - Antd
+  Database:
+    - Mongo
+  Container:
+    - Microk8s
+
+Project Components (Plan):
+  Frontend:
+    counter-web        ReactJS: NextJS, Antd
+  Backend:
+    counter-service    NodeJS: increment by 1, decrement by 1
+    accumulate-service GoLang: add by m, subtract by n
+    auth-service       NodeJS: multiple auth options
+  Database:
+    mongo
+  misc config:
+    - ingres
+    - observability
+  Deployment:
+    Kubernetes
+
+Current App Components (Current):
+  - Counter Service
+  - Counter Web
+
+Setup:
+  1. microk8s start:
+  2. microk8s dashboard-proxy: |
+    use ip/token to login
+    example: https://127.0.0.1:10443
+  3. deploy:
+    backend: TBD
+    frontend: run build-deploy.sh
+  4. access site url:
+    goto dashboard-proxy -> services -> http://10.152.183.219:4000
+    (i.e. Cluster IP of counter-web-deployment, port from deployment yaml file)
