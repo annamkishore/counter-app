@@ -1,6 +1,8 @@
 import {MongoClient} from "mongodb";
 
-const url = "mongodb://10.152.183.49:27017"
+// const url = "mongodb://10.152.183.49:27017"
+const url = process.env.mongo_url
+console.log("mongo url 1: ", url)
 const client = new MongoClient(url)
 
 let crud = {

@@ -5,6 +5,12 @@ import axios from "axios"
 let urlPrefix = process.env.COUNTER_SERVICE_URL
 console.log("rest-client.js url", urlPrefix)
 
+console.log("rest-client.js 1", process.env.NEXT_PUBLIC_COUNTER_SERVICE_URL)
+console.log("rest-client.js 2", process.env.COUNTER_SERVICE_URL)
+
+// hard code - to fix
+urlPrefix = "http://10.152.183.48:4001"
+
 let urlMap = {
     increment: `${urlPrefix}/increment`,
     decrement: `${urlPrefix}/decrement`,

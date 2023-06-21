@@ -22,9 +22,13 @@ Project Components (Planned):
   Frontend:
     counter-web        ReactJS: NextJS, Antd
   Backend:
-    counter-service    NodeJS: increment by 1, decrement by 1
+    counter-service    NodeJS: increment by 1, decrement by 1, current
     accumulate-service GoLang: add by m, subtract by n
     auth-service       NodeJS: multiple auth options
+    api-list-: |
+      reset counter
+      dice numbered
+      dice colored
   Database:
     mongo
   misc config:
