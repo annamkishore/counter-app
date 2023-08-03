@@ -13,7 +13,10 @@ FROM node:18-alpine AS runner
 
 WORKDIR /app
 COPY --from=builder /app/ .
-EXPOSE 4000
+
+ARG port
+ARG NEXT_PUBLIC_counter_service_url
+EXPOSE ${port}
 
 CMD ["yarn", "start"]
 

@@ -29,7 +29,8 @@ services:
       - "5000:4000"
       - "${h_port_web}:${c_port_web}"
     environment:
-      - counter_service_url=http://service-counter:${c_port_1}
+      - port=${c_port_web}
+      - NEXT_PUBLIC_counter_service_url=${service_url}
     depends_on:
       - mongodb
 
