@@ -1,18 +1,18 @@
-import * as db from "./db.js";
+import * as db from "./dao.js";
 
 //-----------------------------REST middleware-----------------------------
 
 const increment = async ctx => {
-    console.log("incr")
+    console.debug("increment middleware")
     ctx.body = await db.increment()
 }
 const decrement =  async ctx => {
-    console.log("decr")
+    console.debug("decrement middleware")
     ctx.body = await db.decrement()
 }
 
 const current = async ctx => {
-    console.log("current")
+    console.debug("current middleware")
     ctx.body = await db.current()
 }
 
