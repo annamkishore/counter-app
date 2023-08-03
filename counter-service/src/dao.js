@@ -16,6 +16,7 @@ export async function checkDBConnection() {
     await client.connect();
     return client.topology.isConnected()
   } catch (error) {
+    console.log("DB Connection error: ", error)
     return client.topology.isConnected()
   } finally {
     await client.close();

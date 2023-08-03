@@ -1,12 +1,17 @@
 FROM node:18-alpine AS build
 
+# Source code with node_modules
 WORKDIR /app
 COPY . .
-
 RUN yarn
 #RUN yarn build
 
-EXPOSE 4001
+# Environment vars from docker compose
+ARG mongo_url
+ARG port
+ARG debug
+
+EXPOSE ${port}
 
 CMD ["yarn", "start"]
 

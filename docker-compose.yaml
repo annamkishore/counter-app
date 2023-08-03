@@ -1,0 +1,42 @@
+#
+# Host PORT (500X): Container PORT (400X)
+#
+version: '3.8'
+services:
+  mongodb:
+    image: mongo
+    ports:
+      - "${h_port_mongo}:${c_port_mongo}"
+    volumes:
+      - dbdata:/data/db
+    networks:
+      - my_network
+  service-counter:
+    build: counter-service
+    ports:
+      - "${h_port_1}:${c_port_1}"
+    environment:
+      - mongo_url=${mongo_url}
+      - port=${c_port_1}
+      - debug=${debug}     # enable | disable
+    depends_on:
+      - mongodb
+    networks:
+      - my_network
+  web:
+    build: counter-web
+    ports:
+      - "5000:4000"
+      - "${h_port_web}:${c_port_web}"
+    environment:
+      - counter_service_url=http://service-counter:${c_port_1}
+    depends_on:
+      - mongodb
+
+networks:
+  my_network:
+
+volumes:
+  dbdata:
+
+# host-port:container-port
