@@ -14,10 +14,22 @@ services:
   service-counter:
     build: counter-service
     ports:
-      - "${h_port_1}:${c_port_1}"
+      - "${h_port_counter}:${c_port_counter}"
     environment:
       - mongo_url=${mongo_url}
-      - port=${c_port_1}
+      - port=${c_port_counter}
+      - debug=${debug}     # enable | disable
+    depends_on:
+      - mongodb
+    networks:
+      - my_network
+  service-tambola:
+    build: tambola-service
+    ports:
+      - "${h_port_tambola}:${c_port_tambola}"
+    environment:
+      - mongo_url=${mongo_url}
+      - port=${c_port_tambola}
       - debug=${debug}     # enable | disable
     depends_on:
       - mongodb
