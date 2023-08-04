@@ -30,7 +30,7 @@ services:
       - "${h_port_web}:${c_port_web}"
     environment:
       - port=${c_port_web}
-      - NEXT_PUBLIC_counter_service_url=${service_url}
+      - NEXT_PUBLIC_counter_service_url=${counter_service_url}
     depends_on:
       - mongodb
 

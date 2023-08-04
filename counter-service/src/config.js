@@ -4,6 +4,7 @@ export function messageAndExit(msg) {
 }
 
 export const APP_CONFIG = {
+  basePath: "/api/v1/counter",
   port: process.env.port || messageAndExit("port not found in env"),
   mongo_url: process.env.mongo_url || messageAndExit("mongo_url not found in env"),
   show() {

@@ -33,7 +33,7 @@ async function update(byValue) {
     }
 
     let result = (await (await coll.find(crud.filter)).toArray())[0].count
-    console.log(`update: ${byValue}, Result: ${result}`)
+    console.log(`updateBy: ${byValue}, Result: ${result}`)
     return result
   } catch (error) {
     console.error('Error while connecting: ', error)
@@ -52,7 +52,7 @@ async function decrement() {
 }
 
 async function current() {
-  return await update()
+  return await update(0)
 }
 
 export {increment, decrement, current}
