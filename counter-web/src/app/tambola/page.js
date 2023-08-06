@@ -15,8 +15,8 @@ export default function Tambola() {
     board[i] = false
   }
 
-
   return <div style={{textAlign: "center"}}>
+    {/* Top Line */}
     <Row align={"middle"} style={{marginBottom: "1rem"}}>
       <Col span={24}>
         <Space>
@@ -27,19 +27,22 @@ export default function Tambola() {
             })
           }
           {
-            <Avatar shape={"square"} size={64}
-                    style={{fontSize: "2rem"}}>{gameData.currNumber}</Avatar>
+            <Avatar shape={"square"} size={128}
+                    style={{fontSize: "5rem", fontWeight: "bold", color: "darkgreen"}}>{gameData.currNumber}</Avatar>
           }
         </Space>
       </Col>
     </Row>
+    {/* Board */}
     <Row align={"middle"}>
       <Col span={24}>
         {Object.entries(board).map(entry => {
           let [index, visited] = entry
           return <>
             <Avatar size={64} key={`b-${index}`}
-                    style={{fontSize: "2rem", margin: "0 0.4rem 0.3rem 0"}}>{index}</Avatar>
+                    style={{color: gameData.visitedNumbers.includes(index-0) ? "darkgreen" : "lightgrey", fontSize: "2rem", margin: "0 0.4rem 0.3rem 0"}}>
+              {index}
+            </Avatar>
             {index % 10 === 0 && <br key={`br-${index}`}/>}
           </>
         })
