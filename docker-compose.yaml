@@ -43,6 +43,7 @@ services:
     environment:
       - port=${c_port_web}
       - NEXT_PUBLIC_counter_service_url=${counter_service_url}
+      - NEXT_PUBLIC_tambola_service_url=${tambola_service_url}
     depends_on:
       - mongodb
 

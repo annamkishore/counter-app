@@ -1,7 +1,7 @@
 import * as http from "http"
 import * as url from "url"
 import * as next from "next"
-import {CounterEndpoints} from "./src/app/services/rest-endpoints.js";
+import {CounterEndpoints, TambolaEndpoints} from "./src/app/services/rest-endpoints.js";
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next.default({dev});
@@ -18,6 +18,7 @@ async function main() {
     if (err) throw err;
     console.log(`> Ready on http://localhost:${port}`);
     console.log("----counter-service Endpoints---- ", CounterEndpoints)
+    console.log("----tambola-service Endpoints---- ", TambolaEndpoints)
   });
 }
 
